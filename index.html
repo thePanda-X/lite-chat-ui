@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>liteUI Chat</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['ProximaVara', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+              mono: ['BerkeleyMono', 'monospace'],
+            },
+            colors: {
+              background: "var(--background)",
+              foreground: "var(--foreground)",
+              card: "var(--card)",
+              "card-foreground": "var(--card-foreground)",
+              popover: "var(--popover)",
+              "popover-foreground": "var(--popover-foreground)",
+              primary: {
+                DEFAULT: "var(--primary)",
+                foreground: "var(--primary-foreground)",
+              },
+              secondary: {
+                DEFAULT: "var(--secondary)",
+                foreground: "var(--secondary-foreground)",
+              },
+              muted: {
+                DEFAULT: "var(--muted)",
+                foreground: "var(--muted-foreground)",
+              },
+              accent: {
+                DEFAULT: "var(--accent)",
+                foreground: "var(--accent-foreground)",
+              },
+              destructive: {
+                DEFAULT: "var(--destructive)",
+                foreground: "var(--destructive-foreground)",
+              },
+              border: "var(--border)",
+              input: "var(--input)",
+              ring: "var(--ring)",
+              "chat-border": "var(--chat-border)",
+              "chat-input-bg": "var(--chat-input-background)",
+              "chat-overlay": "var(--chat-overlay)"
+            },
+            keyframes: {
+              "accordion-down": {
+                from: { height: "0" },
+                to: { height: "var(--radix-accordion-content-height)" },
+              },
+              "accordion-up": {
+                from: { height: "var(--radix-accordion-content-height)" },
+                to: { height: "0" },
+              },
+            },
+            animation: {
+              "accordion-down": "accordion-down 0.2s ease-out",
+              "accordion-up": "accordion-up 0.2s ease-out",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root {
+        /* Base Colors */
+        --color-blue-500: #3b82f6;
+        --color-blue-400: #60a5fa;
+        --color-emerald-500: #10b981;
+        --color-emerald-400: #34d399;
+        --color-amber-500: #f59e0b;
+        --color-amber-400: #fbbf24;
+
+        /* Theme Variables */
+        --background: #21141e;
+        --foreground: #f9f8fb;
+        --card: #0b080b;
+        --card-foreground: #f4f4f5;
+        --popover: #100a0e;
+        --popover-foreground: #f8f1f5;
+        --primary: #a3004c;
+        --primary-foreground: #fbd0e8;
+        --secondary: #362d3d;
+        --secondary-foreground: #d4c7e1;
+        --muted: #423a45;
+        --muted-foreground: #e7d0dd;
+        --accent: #463753;
+        --accent-foreground: #f8f1f5;
+        --destructive: #9d174d;
+        --destructive-foreground: #fff;
+        --info: var(--color-blue-500);
+        --info-foreground: var(--color-blue-400);
+        --success: var(--color-emerald-500);
+        --success-foreground: var(--color-emerald-400);
+        --warning: var(--color-amber-500);
+        --warning-foreground: var(--color-amber-400);
+        --border: #27242c;
+        --input: #302029;
+        --ring: #db2777;
+        
+        /* Charts */
+        --chart-1: #2662d9;
+        --chart-2: #2eb88a;
+        --chart-3: #e88c30;
+        --chart-4: #af57db;
+        --chart-5: #e23670;
+        
+        /* Sidebar */
+        --sidebar-background: #131314;
+        --sidebar-foreground: #f4f4f5;
+        --sidebar-primary: #1d4ed8;
+        --sidebar-primary-foreground: #fff;
+        --sidebar-accent: #261922;
+        --sidebar-accent-foreground: #f4f4f5;
+        --sidebar-border: #000;
+        --sidebar-ring: #db2777;
+        
+        /* Misc */
+        --gradient-noise-top: #1a1419;
+        --color-heading: #c46095;
+        
+        /* Chat Specific */
+        --chat-border: #322028;
+        --chat-background: #1f1a24;
+        --chat-accent: #1a151edb;
+        --chat-overlay: hsla(270, 12%, 16%, var(--blur-fallback, .71));
+        --chat-input-gradient: #432d48;
+        --chat-input-background: hsla(270, 10%, 20%, var(--blur-fallback, 0.4));
+        --wordmark-color: #e3bad1;
+        
+        --radius: 0.5rem;
+      }
+      body {
+        font-family: 'ProximaVara', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      }
+      code, pre, kbd {
+        font-family: 'BerkeleyMono', monospace;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "katex": "https://esm.sh/katex@0.16.9",
+    "react-markdown": "https://esm.sh/react-markdown@^9.0.1",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "remark-gfm": "https://esm.sh/remark-gfm@^4.0.0",
+    "remark-math": "https://esm.sh/remark-math@^6.0.0",
+    "rehype-katex": "https://esm.sh/rehype-katex@^7.0.0",
+    "react-syntax-highlighter": "https://esm.sh/react-syntax-highlighter@15.6.1?external=react",
+    "react-syntax-highlighter/dist/esm/styles/prism": "https://esm.sh/react-syntax-highlighter@15.6.1/dist/esm/styles/prism?external=react",
+    "react-syntax-highlighter/": "https://esm.sh/react-syntax-highlighter@^16.1.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-background text-foreground antialiased min-h-screen selection:bg-primary selection:text-primary-foreground">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

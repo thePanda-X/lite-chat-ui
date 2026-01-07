@@ -1,0 +1,5 @@
+{
+  "name": "liteUI Chat",
+  "description": "A clean, local-first chat interface for Ollama with markdown support, thinking process visibility, and usage statistics.",
+  "requestFramePermissions": []
+}

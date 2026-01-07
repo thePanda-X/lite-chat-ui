@@ -2,7 +2,8 @@
 
 A modern, lightweight local AI chat interface built with React and TypeScript. Connect to your Ollama models for private, fast, and powerful conversations.
 
-![Screenshot placeholder](https://via.placeholder.com/800x400?text=liteUI+Chat+Interface)
+<img width="1919" height="953" alt="image" src="https://github.com/user-attachments/assets/b1289da0-4c4b-45e9-a504-df8ca46dc297" />
+
 
 ## Features
 

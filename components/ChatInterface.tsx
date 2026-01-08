@@ -263,7 +263,7 @@ export const ChatInterface: React.FC = () => {
             </header>
 
             {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto pt-24 md:pt-20">
+            <div className="flex-1 overflow-y-none pt-24 md:pt-20">
                 <div className="max-w-4xl mx-auto px-4 md:px-6 py-6 space-y-6">
                     {messages.length === 0 ? (
                         <div className="flex flex-col items-center justify-center min-h-[60vh] text-center space-y-8 py-12">
@@ -313,11 +313,10 @@ export const ChatInterface: React.FC = () => {
                             >
                                 {/* Avatar */}
                                 <div className="flex-shrink-0 mt-1">
-                                    <div className={`h-9 w-9 rounded-xl flex items-center justify-center transition-all ${
-                                        msg.role === 'user' 
-                                            ? 'bg-gradient-to-br from-primary/90 to-primary/70 text-primary-foreground shadow-lg shadow-primary/20' 
-                                            : 'bg-secondary/50 text-secondary-foreground/70'
-                                    }`}>
+                                    <div className={`h-9 w-9 rounded-xl flex items-center justify-center transition-all ${msg.role === 'user'
+                                        ? 'bg-gradient-to-br from-primary/90 to-primary/70 text-primary-foreground shadow-lg shadow-primary/20'
+                                        : 'bg-secondary/50 text-secondary-foreground/70'
+                                        }`}>
                                         {msg.role === 'user' ? <User className="h-4 w-4" /> : <Bot className="h-4 w-4" />}
                                     </div>
                                 </div>
@@ -325,18 +324,16 @@ export const ChatInterface: React.FC = () => {
                                 {/* Message Content */}
                                 <div className={`flex flex-col max-w-[85%] md:max-w-[75%] ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
                                     {/* Role Label */}
-                                    <span className={`text-[10px] font-medium uppercase tracking-wider mb-1.5 ${
-                                        msg.role === 'user' ? 'text-primary/50 mr-1' : 'text-muted-foreground/50 ml-1'
-                                    }`}>
+                                    <span className={`text-[10px] font-medium uppercase tracking-wider mb-1.5 ${msg.role === 'user' ? 'text-primary/50 mr-1' : 'text-muted-foreground/50 ml-1'
+                                        }`}>
                                         {msg.role === 'user' ? 'You' : 'Assistant'}
                                     </span>
 
                                     {/* Message Bubble */}
-                                    <div className={`rounded-2xl px-4 py-3 ${
-                                        msg.role === 'user'
-                                            ? 'bg-gradient-to-br from-primary/90 to-primary/80 text-primary-foreground rounded-tr-md shadow-lg shadow-primary/15'
-                                            : 'bg-secondary/30 text-foreground rounded-tl-md'
-                                    }`}>
+                                    <div className={`rounded-2xl px-4 py-3 ${msg.role === 'user'
+                                        ? 'bg-gradient-to-br from-primary/90 to-primary/80 text-primary-foreground rounded-tr-md shadow-lg shadow-primary/15'
+                                        : 'bg-secondary/30 text-foreground rounded-tl-md'
+                                        }`}>
                                         {msg.thinking && <ThinkingDisclosure content={msg.thinking} />}
 
                                         {msg.role === 'model' || msg.role === 'assistant' ? (
@@ -405,11 +402,10 @@ export const ChatInterface: React.FC = () => {
                             disabled={!input.trim() || isLoading}
                             size="icon"
                             title="Send message (Ctrl+Enter)"
-                            className={`mb-1 mr-1 !rounded-xl h-10 w-10 flex-shrink-0 transition-all duration-200 ${
-                                input.trim() 
-                                    ? 'bg-gradient-to-br from-primary/90 to-primary/80 text-primary-foreground hover:from-primary hover:to-primary/90 hover:scale-105 shadow-lg shadow-primary/25' 
-                                    : 'bg-secondary/50 text-muted-foreground/40'
-                            }`}
+                            className={`mb-1 mr-1 !rounded-xl h-10 w-10 flex-shrink-0 transition-all duration-200 ${input.trim()
+                                ? 'bg-gradient-to-br from-primary/90 to-primary/80 text-primary-foreground hover:from-primary hover:to-primary/90 hover:scale-105 shadow-lg shadow-primary/25'
+                                : 'bg-secondary/50 text-muted-foreground/40'
+                                }`}
                         >
                             {isLoading ? <StopCircle className="h-5 w-5 animate-pulse" /> : <Send className="h-5 w-5" />}
                         </Button>
